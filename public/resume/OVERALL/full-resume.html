@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Utkarsh Mani Tripathi | Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../spidey-theme.css" />
+    <style>
+        .card { max-width: 800px; width: 92%; padding: 3rem; margin: 2rem auto; transition: all 0.5s ease; position: relative; z-index: 10; }
+        .resume-header { border-bottom: 3px solid var(--spidey-red); padding-bottom: 2rem; margin-bottom: 2rem; }
+        .resume-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--text-primary); }
+        .resume-header p { color: var(--text-muted); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; }
+        
+        .section-title { color: var(--spidey-red); font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em; margin: 2.5rem 0 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem; display: block; }
+        
+        .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+        .contact-links a { font-size: 0.8rem; color: var(--text-secondary); text-decoration: none; font-weight: 700; border: 1px solid var(--border-subtle); padding: 0.4rem 1rem; border-radius: 4px; transition: all 0.3s; }
+        .contact-links a:hover { border-color: var(--spidey-red); color: var(--spidey-red); background: rgba(255,42,42,0.05); }
+
+        .summary { font-size: 1rem; line-height: 1.6; color: var(--text-secondary); }
+        
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+        .skill-item { font-size: 0.9rem; color: var(--text-primary); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+        .skill-item::before { content: "🕸️"; font-size: 0.8rem; }
+
+        .exp-item { margin-bottom: 2rem; }
+        .exp-item h3 { font-size: 1.2rem; color: var(--text-primary); display: flex; justify-content: space-between; align-items: baseline; }
+        .exp-item .date { color: var(--spidey-red); font-size: 0.8rem; font-style: italic; }
+        .exp-item .org { color: var(--text-muted); text-transform: uppercase; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; margin: 0.2rem 0 0.8rem; }
+        .exp-item ul { list-style: none; padding: 0; }
+        .exp-item li { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative; }
+        .exp-item li::before { content: "▹"; position: absolute; left: 0; color: var(--spidey-red); font-weight: bold; }
+
+        .edu-item { margin-bottom: 1.5rem; }
+        .edu-item h4 { color: var(--text-primary); margin-bottom: 0.2rem; }
+        .edu-item p { color: var(--text-secondary); font-size: 0.9rem; }
+
+        .download-btn { position: fixed; top: 1.5rem; right: 1.5rem; background: var(--spidey-red); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.85rem; cursor: pointer; z-index: 1000; box-shadow: 0 10px 30px rgba(255,42,42,0.4); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; gap: 0.5rem; }
+        .download-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 15px 40px rgba(255,42,42,0.6); }
+
+        .theme-toggle { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--secondary-bg); border: 1px solid var(--border-subtle); color: var(--text-primary); width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: all 0.3s; }
+        .theme-toggle:hover { transform: rotate(15deg) scale(1.1); border-color: var(--spidey-red); }
+
+        .back { position: fixed; top: 1.5rem; left: 1.5rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none !important; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; z-index: 1000; backdrop-filter: blur(10px); transition: all 0.3s; }
+        .back:hover { background: rgba(255,255,255,0.1); border-color: var(--spidey-red); color: var(--spidey-red); }
+
+        @media print {
+            .download-btn, .back, .theme-toggle { display: none !important; }
+            body { background: white !important; color: black !important; }
+            .card { border: none !important; box-shadow: none !important; margin: 0 !important; width: 100% !important; max-width: none !important; padding: 0 !important; }
+        }
+    </style>
+</head>
+<body class="dark">
+    <a class="back" href="/">← Back to Portfolio</a>
+    <button class="download-btn" onclick="window.print()">Download Resume / PDF</button>
+    <button class="theme-toggle" id="themeBtn">🌓</button>
+    
+    <article class="card">
+        <header class="resume-header">
+            <h1>Utkarsh Mani Tripathi</h1>
+            <p>Fullstack Developer · AI Enthusiast · Voice Over Artist</p>
+            <div class="contact-links">
+                <a href="mailto:Utkarshmanitripathi2006@gmail.com">Email</a>
+                <a href="tel:+917065163175">+91 7065163175</a>
+                <a href="https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Utkarsh-Mani-Tripathi-GIT" target="_blank">GitHub</a>
+            </div>
+        </header>
+
+        <section>
+            <span class="section-title">Summary</span>
+            <p class="summary">
+                Dynamic and adaptable Computer Science Engineering student with a strong foundation in Python, C programming, and backend automation. Experienced in building and optimizing scalable architectures (Node.js, Express, MongoDB) through internships at Flipkart Samarth. Beyond tech, I bring 3+ years of professional experience as a Voice Over Artist. I thrive at the intersection of creativity and technical acumen to build impactful digital solutions.
+            </p>
+        </section>
+
+        <section>
+            <span class="section-title">Core Skills</span>
+            <div class="skills-grid">
+                <div class="skill-item">Python / C Programming</div>
+                <div class="skill-item">Node.js / Express.js</div>
+                <div class="skill-item">MongoDB / Backend Dev</div>
+                <div class="skill-item">Project Management</div>
+                <div class="skill-item">Team Leadership</div>
+                <div class="skill-item">Voice Over & Accents</div>
+                <div class="skill-item">Problem Solving</div>
+                <div class="skill-item">Communication</div>
+            </div>
+        </section>
+
+        <section>
+            <span class="section-title">Experience</span>
+            
+            <div class="exp-item">
+                <h3>Software Development Intern <span class="date">Feb 2025 - Apr 2025</span></h3>
+                <p class="org">Flipkart Samarth — Gurugram, India</p>
+                <ul>
+                    <li>Built and optimized backend systems using Node.js, Express.js, and MongoDB to streamline seller onboarding.</li>
+                    <li>Developed secure RESTful APIs to enhance database efficiency and automate repetitive data-entry workflows.</li>
+                    <li>Contributed to scalable architecture enabling digital inclusion for rural entrepreneurs and artisans.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <h3>Voice Over Artist <span class="date">Nov 2020 - Feb 2024</span></h3>
+                <p class="org">Crossover Media — Remote / Gurugram</p>
+                <ul>
+                    <li>Managed creative projects, ensuring timely and high-quality professional audio outputs.</li>
+                    <li>Assisted in testing and quality assurance of software systems for studio use.</li>
+                    <li>Conducted team training on vocal delivery styles, modulation, and accent techniques.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <span class="section-title">Education</span>
+            <div class="edu-item">
+                <h4>GTB4CEC - G-8 Area Rajouri Garden, Delhi</h4>
+                <p>Bachelor of Technology in Computer Science and Engineering (CSE)</p>
+            </div>
+            <div class="edu-item">
+                <h4>Ryan International School — Gurugram (CBSE)</h4>
+                <p>All India Senior School Certificate Examination (Science/PCM)</p>
+            </div>
+        </section>
+
+        <section>
+            <span class="section-title">Activities & Honors</span>
+            <div class="edu-item">
+                <p>• Basketball Coach: Mentored Under-14 team in Gurgaon Basketball League (2 Years).</p>
+                <p>• Top Performer: Manor Courses Summer School, UK.</p>
+                <p>• Languages: Hindi (Native), English (Advanced C1), French (Elementary A2).</p>
+            </div>
+        </section>
+    </article>
+
+    <script>
+        const btn = document.getElementById('themeBtn');
+        const body = document.body;
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.className = savedTheme;
+        
+        btn.addEventListener('click', () => {
+            if (body.classList.contains('dark')) {
+                body.className = 'light';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.className = 'dark';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
