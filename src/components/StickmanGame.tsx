@@ -332,11 +332,15 @@ export const StickmanGame = () => {
             <p className="text-white/50 text-sm leading-relaxed">
               The Python version has day/night transitions, spaceships, power-ups, sound effects, and way more intensity. Download it free on GitHub.
             </p>
-            <a href="https://github.com/Utkarsh-Mani-Tripathi-GIT/stickman-runner-python/archive/refs/heads/main.zip"
+            <a href="https://github.com/Utkarsh-Mani-Tripathi-GIT/stickman-runner-python/archive/refs/heads/master.zip"
+              target="_blank" rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="block w-full py-4 bg-[#1458d2] text-white font-black uppercase tracking-widest text-xs rounded-lg hover:scale-[1.02] transition-transform shadow-[0_10px_30px_rgba(20,88,210,0.4)]">
               ⬇ Download Python Game
             </a>
             <a href="https://github.com/Utkarsh-Mani-Tripathi-GIT/stickman-runner-python" target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="block w-full py-3 bg-white/5 border border-white/10 text-white font-bold uppercase tracking-widest text-[10px] rounded-lg hover:border-[#1458d2]/50 transition-colors">
               View on GitHub
             </a>

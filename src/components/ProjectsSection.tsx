@@ -12,7 +12,7 @@ const PROJECTS = [
     tech: ["React", "Canvas", "Game Engine", "GSAP"],
     isPlayable: true,
     github: "https://github.com/Utkarsh-Mani-Tripathi-GIT/stickman-runner-python",
-    download: "https://github.com/Utkarsh-Mani-Tripathi-GIT/stickman-runner-python/archive/refs/heads/main.zip",
+    download: "https://github.com/Utkarsh-Mani-Tripathi-GIT/stickman-runner-python/archive/refs/heads/master.zip",
   }
 ];
 
@@ -76,6 +76,9 @@ export const ProjectsSection = () => {
                     
                     <a 
                       href={project.download}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="flex-1 sm:flex-none px-6 md:px-8 py-3 md:py-4 bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-[10px] md:text-xs rounded-sm hover:bg-white hover:text-black transition-all flex items-center justify-center gap-3"
                     >
                       <Download size={14} />
