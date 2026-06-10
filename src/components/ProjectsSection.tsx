@@ -3,17 +3,29 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { StickmanGame } from "./StickmanGame";
-import { Download, Play, X, Code } from "lucide-react";
+import { Download, Play, X, Code, ExternalLink } from "lucide-react";
 
 const PROJECTS = [
   {
     title: "Stickman Runner: Multiverse",
-    description: "A high-fidelity recreaton of my Python game. Features dynamic day/night transitions, duck/slide mechanics, screen shake, and enemy spaceships.",
+    description: "A high-fidelity recreation of my Python game. Features dynamic day/night transitions, duck/slide mechanics, screen shake, and enemy spaceships.",
     tech: ["React", "Canvas", "Game Engine", "GSAP"],
     isPlayable: true,
+    emoji: "🕷️",
     github: "https://github.com/Utkarsh-Mani-Tripathi-GIT/stickman-runner-python",
     download: "https://github.com/Utkarsh-Mani-Tripathi-GIT/stickman-runner-python/archive/refs/heads/master.zip",
-  }
+    liveUrl: null,
+  },
+  {
+    title: "National Legal Observatory",
+    description: "An independent legal research platform and academic journal covering constitutional law, judicial judgments, public policy, and civil rights — built for my friend Bhoomija Khanna, a law student and the platform's founder & chief editor. I'm the tech guy.",
+    tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
+    isPlayable: false,
+    emoji: "⚖️",
+    github: "https://github.com/Utkarsh-Mani-Tripathi-GIT",
+    download: null,
+    liveUrl: "https://legal-observatory.vercel.app/",
+  },
 ];
 
 export const ProjectsSection = () => {
@@ -29,9 +41,9 @@ export const ProjectsSection = () => {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-10"
         >
           <div className="space-y-4">
-            <span className="text-spidey-red font-black uppercase tracking-[0.3em] text-[10px] md:text-xs">Sole Focus</span>
+            <span className="text-spidey-red font-black uppercase tracking-[0.3em] text-[10px] md:text-xs">What I&apos;ve Built</span>
             <h2 className="text-4xl sm:text-5xl md:text-8xl font-black italic uppercase tracking-tighter text-text-primary leading-none">
-              Featured <br /> <span className="text-spidey-red">Game</span>
+              Featured <br /> <span className="text-spidey-red">Projects</span>
             </h2>
           </div>
         </motion.div>
@@ -66,24 +78,40 @@ export const ProjectsSection = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-3 md:gap-4 pt-2">
-                    <button 
-                      onClick={() => setPlayingGame(true)}
-                      className="flex-1 sm:flex-none px-6 md:px-8 py-3 md:py-4 bg-spidey-red text-white font-black uppercase tracking-widest text-[10px] md:text-xs rounded-sm shadow-[0_10px_30px_rgba(255,42,42,0.3)] hover:scale-105 transition-transform flex items-center justify-center gap-3"
-                    >
-                      <Play size={14} fill="currentColor" />
-                      Play
-                    </button>
+                    {project.isPlayable && (
+                      <button 
+                        onClick={() => setPlayingGame(true)}
+                        className="flex-1 sm:flex-none px-6 md:px-8 py-3 md:py-4 bg-spidey-red text-white font-black uppercase tracking-widest text-[10px] md:text-xs rounded-sm shadow-[0_10px_30px_rgba(255,42,42,0.3)] hover:scale-105 transition-transform flex items-center justify-center gap-3"
+                      >
+                        <Play size={14} fill="currentColor" />
+                        Play
+                      </button>
+                    )}
+
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 sm:flex-none px-6 md:px-8 py-3 md:py-4 bg-spidey-red text-white font-black uppercase tracking-widest text-[10px] md:text-xs rounded-sm shadow-[0_10px_30px_rgba(255,42,42,0.3)] hover:scale-105 transition-transform flex items-center justify-center gap-3"
+                      >
+                        <ExternalLink size={14} />
+                        Live Site
+                      </a>
+                    )}
                     
-                    <a 
-                      href={project.download}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex-1 sm:flex-none px-6 md:px-8 py-3 md:py-4 bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-[10px] md:text-xs rounded-sm hover:bg-white hover:text-black transition-all flex items-center justify-center gap-3"
-                    >
-                      <Download size={14} />
-                      Source
-                    </a>
+                    {project.download && (
+                      <a 
+                        href={project.download}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex-1 sm:flex-none px-6 md:px-8 py-3 md:py-4 bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-[10px] md:text-xs rounded-sm hover:bg-white hover:text-black transition-all flex items-center justify-center gap-3"
+                      >
+                        <Download size={14} />
+                        Source
+                      </a>
+                    )}
 
                     <a 
                       href={project.github}
@@ -98,7 +126,7 @@ export const ProjectsSection = () => {
 
                 <div className="w-full lg:w-72 aspect-video lg:aspect-square bg-black/40 rounded-xl border border-white/5 flex items-center justify-center group-hover:border-spidey-red/20 transition-colors overflow-hidden relative">
                    <div className="absolute inset-0 bg-gradient-to-br from-spidey-red/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                   <span className="text-4xl md:text-6xl group-hover:scale-125 transition-transform duration-500 select-none">🕷️</span>
+                   <span className="text-4xl md:text-6xl group-hover:scale-125 transition-transform duration-500 select-none">{project.emoji}</span>
                 </div>
               </div>
               <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-spidey-red/5 blur-[120px] rounded-full group-hover:bg-spidey-red/10 transition-colors" />

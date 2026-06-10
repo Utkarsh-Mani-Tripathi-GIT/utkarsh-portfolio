@@ -15,6 +15,11 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Utkarsh Mani Tripathi | Spider-Verse Portfolio",
   description: "High-end personal developer portfolio with a Spider-Verse inspired theme. Fullstack Developer, AI Enthusiast, B.Tech CSE.",
+  icons: {
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕷️</text></svg>",
+    shortcut: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕷️</text></svg>",
+    apple: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕷️</text></svg>",
+  },
 };
 
 import { ThemeProvider } from "@/components/ThemeProvider";
