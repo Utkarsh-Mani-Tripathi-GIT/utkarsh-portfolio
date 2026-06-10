@@ -29,7 +29,7 @@ export const HeroSection = () => {
 
           <div className="inline-block px-4 py-1.5 border border-spidey-red/50 rounded-full bg-spidey-red/5 backdrop-blur-sm">
              <span className="text-[8px] md:text-[10px] uppercase font-black tracking-[0.3em] md:tracking-[0.4em] text-spidey-red leading-tight">
-               Fullstack Developer · AI Enthusiast · CSE
+               Builder · Engineer · Creator
              </span>
           </div>
 
@@ -64,7 +64,7 @@ export const HeroSection = () => {
             transition={{ delay: 1.5, duration: 1 }}
             className="text-text-secondary text-base md:text-xl max-w-2xl mx-auto font-medium px-4"
           >
-            Computer Science Engineering student focused on building high-performance systems and backend automation.
+            B.Tech CSE student building full-stack products, AI-powered tools, and anything worth shipping — from Delhi NCR.
           </motion.p>
 
           <motion.div

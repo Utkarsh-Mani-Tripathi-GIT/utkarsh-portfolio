@@ -6,12 +6,16 @@ import { Brain, Zap, Shield, Target, Cpu, Code } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const SKILLS = [
-  { name: "Python / C", icon: Code, color: "text-spidey-red", desc: "Developing efficient backend systems and automation scripts." },
-  { name: "Backend Dev", icon: Brain, color: "text-electric-blue", desc: "Building RESTful APIs with Node.js, Express, and MongoDB." },
-  { name: "Voice Over", icon: Cpu, color: "text-neon-purple", desc: "Professional voice modulation and creative performance." },
-  { name: "Project Management", icon: Shield, color: "text-text-muted", desc: "Ensuring timely delivery and high-quality creative outputs." },
-  { name: "Team Leadership", icon: Zap, color: "text-spidey-red", desc: "Mentoring teams and leading collaborative projects." },
-  { name: "Problem Solving", icon: Target, color: "text-electric-blue", desc: "Applying analytical expertise to tech projects." },
+  { name: "React & Next.js", icon: Code, color: "text-electric-blue", desc: "Building responsive, performant frontends and fullstack apps with React 19 and Next.js App Router." },
+  { name: "Python / C", icon: Target, color: "text-spidey-red", desc: "Writing efficient scripts, automation tools, and backend logic — the languages I started with." },
+  { name: "Backend & APIs", icon: Brain, color: "text-neon-purple", desc: "Building RESTful APIs with Node.js, Express, and MongoDB. Auth, DB design, and server logic." },
+  { name: "AI & Automation", icon: Cpu, color: "text-electric-blue", desc: "Integrating Gemini API, LLMs, and AI tools into real products. Prompt engineering and agentic workflows." },
+  { name: "SQL & Databases", icon: Shield, color: "text-text-muted", desc: "Schema design and queries in PostgreSQL and Supabase. Comfortable with NoSQL (MongoDB) too." },
+  { name: "Git & DevOps", icon: Zap, color: "text-spidey-red", desc: "Version control, CI/CD workflows, Vercel deployments, and keeping things actually shipping." },
+  { name: "Voice Over", icon: Cpu, color: "text-neon-purple", desc: "Years of professional voice work across commercial and media projects with Crossover Media." },
+  { name: "Camera & Production", icon: Target, color: "text-electric-blue", desc: "On-set camera ops, BTS, and content production for video creators." },
+  { name: "Team Leadership", icon: Shield, color: "text-text-muted", desc: "Managing crews and collaborators across creative and technical projects." },
+  { name: "Problem Solving", icon: Brain, color: "text-spidey-red", desc: "Breaking down hard problems — whether it's a system design challenge or figuring out a shot on set." },
 ];
 
 export const SkillsSection = () => {

@@ -25,6 +25,18 @@ const PROJECTS = [
     github: "https://github.com/Utkarsh-Mani-Tripathi-GIT",
     download: null,
     liveUrl: "https://legal-observatory.vercel.app/",
+    badge: null,
+  },
+  {
+    title: "Ultimate Runner",
+    description: "A hybrid infinite runner combining the depth of Temple Run with the energy of Subway Surfers. Currently in active development — featuring 3D lanes, power-ups, and dynamic obstacle generation.",
+    tech: ["Game Dev", "Python", "In Progress"],
+    isPlayable: false,
+    emoji: "🔨",
+    github: "https://github.com/Utkarsh-Mani-Tripathi-GIT/Ultimate Runner",
+    download: null,
+    liveUrl: null,
+    badge: "In Development",
   },
 ];
 

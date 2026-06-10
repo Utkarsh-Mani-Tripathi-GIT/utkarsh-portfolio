@@ -5,6 +5,14 @@ import { motion } from "framer-motion";
 
 const EXPERIENCE = [
   { 
+    title: "Camera Crew & Tech Lead", 
+    org: "Crossover Media", 
+    date: "2025 - Present",
+    desc: "Managing camera operations, BTS documentation, and on-set tech for a content creator project. Handling equipment setup, shot composition, and post-production coordination across shoots.",
+    tech: ["Camera Ops", "BTS", "Content Production", "On-set Tech"],
+    link: "https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/details/experience/"
+  },
+  { 
     title: "Software Development Intern", 
     org: "Flipkart Samarth", 
     date: "Feb 2025 - Apr 2025",
@@ -16,10 +24,10 @@ const EXPERIENCE = [
     title: "Voice Over Artist", 
     org: "Crossover Media", 
     date: "Nov 2020 - Feb 2024",
-    desc: "Managed creative projects, ensuring timely and high-quality professional audio outputs. Conducted team training on vocal delivery styles and modulation.",
+    desc: "Delivered professional voice over work across commercial, creative, and media projects based out of Assam, Delhi, and Dehradun. Managed vocal delivery, modulation training, and team coordination.",
     tech: ["Audio Engineering", "Voice Modulation", "Project Management"],
     link: "https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/details/experience/?highlightedId=2860457352"
-  }
+  },
 ];
 
 export const ExperienceSection = () => {

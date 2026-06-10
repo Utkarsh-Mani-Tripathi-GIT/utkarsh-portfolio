@@ -74,6 +74,8 @@ export const ContactSection = () => {
              <a href="https://github.com/Utkarsh-Mani-Tripathi-GIT" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs">Github</a>
              <a href="https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs">LinkedIn</a>
              <a href="https://x.com/utkarshmanitr11" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs">Twitter</a>
+             <a href="https://www.instagram.com/jhandupatel.69" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs">Instagram</a>
+             <a href="https://wa.me/917065163175?text=hey%20i%20was%20just%20checking%20out%20your%20portfolio%20website%20and....." target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs">WhatsApp</a>
           </div>
         </div>
       </div>
