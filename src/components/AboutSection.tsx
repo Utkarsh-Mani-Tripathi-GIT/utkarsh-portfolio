@@ -37,7 +37,7 @@ export const AboutSection = () => {
               I am a <span className="text-text-primary font-bold">Computer Science Engineering</span> student at GTB4CEC, Delhi — building things across <span className="text-text-primary font-bold">fullstack dev, AI, and whatever else needs building</span>.
             </p>
             <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-              Based in Haryana, roots in Bihar — I move between Delhi (college), Gurugram, and wherever the work is. I got into tech because I couldn&apos;t stop taking things apart to see how they worked. That curiosity turned into a career in making them work better.
+              Gurugram-based, college in Delhi — I got into tech because I couldn&apos;t stop taking things apart to see how they worked. That curiosity turned into a career in making them work better.
             </p>
             <p className="text-text-secondary text-base md:text-lg leading-relaxed">
               Outside of code, I&apos;ve spent years doing voice over and production work with Crossover Media across Assam, Delhi, and Dehradun. Right now I&apos;m also the camera and BTS guy on a content creator project — because being useful beats being specialized.
