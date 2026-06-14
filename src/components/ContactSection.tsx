@@ -68,12 +68,12 @@ export const ContactSection = () => {
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
         
         {/* Left: Spider Logo */}
-        <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 flex-shrink-0 flex items-center justify-center rounded-full border border-spidey-red/20 bg-background overflow-hidden shadow-[0_0_50px_rgba(255,42,42,0.1)]">
-          <div className="absolute inset-0 bg-spidey-red/10 rounded-full blur-[80px] md:blur-[100px]" />
+        <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 flex-shrink-0 flex items-center justify-center rounded-full border border-spidey-red/20 bg-background overflow-hidden dark:shadow-[0_0_50px_rgba(255,42,42,0.1)]">
+          <div className="absolute inset-0 hidden dark:block bg-spidey-red/10 rounded-full blur-[80px] md:blur-[100px]" />
           <motion.img
             src="/images/spiderman-hanging.png"
             alt="Spiderman Hanging"
-            className="w-[120%] h-[120%] object-contain relative z-10"
+            className="w-[85%] h-[85%] object-contain relative z-10"
             initial={{ y: -300, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
