@@ -75,12 +75,14 @@ export const HeroSection = () => {
           >
              <Link 
                href="/projects"
+               title="View my projects"
                className="w-full sm:w-auto px-8 py-4 bg-spidey-red text-white font-black uppercase tracking-widest text-[10px] md:text-xs hover:bg-text-primary hover:text-background transition-all duration-300 shadow-[8px_8px_0_rgba(225,29,46,0.3)] text-center"
              >
                 Launch Project
              </Link>
              <Link 
                href="/about"
+               title="Read about my origin story"
                className="w-full sm:w-auto px-8 py-4 border-2 border-text-primary/10 text-text-primary font-black uppercase tracking-widest text-[10px] md:text-xs hover:border-spidey-red transition-all duration-300 text-center"
              >
                 The Origin

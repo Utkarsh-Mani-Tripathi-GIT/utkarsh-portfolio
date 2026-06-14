@@ -1,18 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const EXPERIENCE = [
   { 
+    id: "crossover-camera",
     title: "Camera Crew & Tech Lead", 
-    org: "Crossover Media", 
+    org: "Unofficial Freelance", 
     date: "2025 - Present",
     desc: "Managing camera operations, BTS documentation, and on-set tech for a content creator project. Handling equipment setup, shot composition, and post-production coordination across shoots.",
     tech: ["Camera Ops", "BTS", "Content Production", "On-set Tech"],
     link: "https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/details/experience/"
   },
   { 
+    id: "flipkart-samarth",
     title: "Software Development Intern", 
     org: "Flipkart Samarth", 
     date: "Feb 2025 - Apr 2025",
@@ -21,8 +24,9 @@ const EXPERIENCE = [
     link: "https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/details/experience/?highlightedId=2633012074"
   },
   { 
+    id: "crossover-voice",
     title: "Voice Over Artist", 
-    org: "Crossover Media", 
+    org: "Unofficial Freelance", 
     date: "Nov 2020 - Feb 2024",
     desc: "Delivered professional voice over work across commercial, creative, and media projects based out of Assam, Delhi, and Dehradun. Managed vocal delivery, modulation training, and team coordination.",
     tech: ["Audio Engineering", "Voice Modulation", "Project Management"],
@@ -31,8 +35,33 @@ const EXPERIENCE = [
 ];
 
 export const ExperienceSection = () => {
+  const [activeHighlight, setActiveHighlight] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const highlight = params.get("highlight");
+    if (highlight) {
+      const el = document.getElementById(highlight);
+      if (el) {
+        const timerScroll = setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+          setActiveHighlight(highlight);
+        }, 500);
+
+        const timerFade = setTimeout(() => {
+          setActiveHighlight(null);
+        }, 4500);
+
+        return () => {
+          clearTimeout(timerScroll);
+          clearTimeout(timerFade);
+        };
+      }
+    }
+  }, []);
+
   return (
-    <section id="experience" className="py-20 md:py-32 container mx-auto px-6 overflow-hidden">
+    <section id="experience" className="scroll-mt-28 py-20 md:py-32 container mx-auto px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 md:gap-20">
         
         {/* Left: Sticky Title */}
@@ -56,12 +85,18 @@ export const ExperienceSection = () => {
           <div className="space-y-12 md:space-y-20">
             {EXPERIENCE.map((item, i) => (
               <motion.div
-                key={i}
+                key={item.id}
+                id={item.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.2 }}
                 viewport={{ once: true }}
-                className="relative group pl-6 sm:pl-8"
+                className={cn(
+                  "relative group pl-6 sm:pl-8 py-4 rounded-xl border border-transparent transition-all duration-500",
+                  activeHighlight === item.id
+                    ? "border-spidey-red/40 bg-spidey-red/5 shadow-[0_0_25px_rgba(255,42,42,0.25)] scale-[1.01]"
+                    : ""
+                )}
               >
                 <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-spidey-red/20 group-hover:bg-spidey-red transition-colors duration-500" />
                 

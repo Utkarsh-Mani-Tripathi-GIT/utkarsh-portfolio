@@ -9,6 +9,7 @@ export const CustomCursor = () => {
   const cursorY = useMotionValue(-100);
   const [rotation, setRotation] = useState(0);
   const [isOverNav, setIsOverNav] = useState(false);
+  const [isOverContact, setIsOverContact] = useState(false);
   const [isMoving, setIsMoving] = useState(false);
 
   const springConfig = { damping: 45, stiffness: 180, mass: 2.5 };
@@ -42,6 +43,23 @@ export const CustomCursor = () => {
 
       if (e.clientY < 120) setIsOverNav(true);
       else setIsOverNav(false);
+
+      const contactEl = document.getElementById("contact");
+      if (contactEl) {
+        const rect = contactEl.getBoundingClientRect();
+        if (
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom
+        ) {
+          setIsOverContact(true);
+        } else {
+          setIsOverContact(false);
+        }
+      } else {
+        setIsOverContact(false);
+      }
     };
 
     window.addEventListener("mousemove", moveCursor);
@@ -64,8 +82,8 @@ export const CustomCursor = () => {
           rotate: rotation,
           translateX: "-50%",
           translateY: "-50%",
-          opacity: isOverNav ? 0.2 : 1,
-          scale: isOverNav ? 0.6 : 1,
+          opacity: isOverContact || isOverNav ? 0 : 1,
+          scale: isOverContact || isOverNav ? 0 : 1,
         }}
       >
         <svg viewBox="0 0 100 100" className={`w-full h-full fill-spidey-red drop-shadow-[0_0_12px_rgba(255,42,42,0.8)] ${isMoving ? "spider-moving" : ""}`}>
@@ -98,6 +116,8 @@ export const CustomCursor = () => {
           y: cursorYSpring,
           translateX: "-50%",
           translateY: "-50%",
+          opacity: isOverContact || isOverNav ? 0 : 1,
+          scale: isOverContact || isOverNav ? 0 : 1,
         }}
       />
     </>

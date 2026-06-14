@@ -1,11 +1,37 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export const AboutSection = () => {
+  const [activeHighlight, setActiveHighlight] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const highlight = params.get("highlight");
+    if (highlight) {
+      const el = document.getElementById(highlight);
+      if (el) {
+        const timerScroll = setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+          setActiveHighlight(highlight);
+        }, 500);
+
+        const timerFade = setTimeout(() => {
+          setActiveHighlight(null);
+        }, 4500);
+
+        return () => {
+          clearTimeout(timerScroll);
+          clearTimeout(timerFade);
+        };
+      }
+    }
+  }, []);
+
   return (
-    <section id="about" className="py-20 md:py-32 container mx-auto px-6 overflow-hidden">
+    <section id="about" className="scroll-mt-28 py-20 md:py-32 container mx-auto px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 md:gap-20">
         
         {/* Left: Sticky Title */}
@@ -40,7 +66,7 @@ export const AboutSection = () => {
               Gurugram-based, college in Delhi — I got into tech because I couldn&apos;t stop taking things apart to see how they worked. That curiosity turned into a career in making them work better.
             </p>
             <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-              Outside of code, I&apos;ve spent years doing voice over and production work with Crossover Media across Assam, Delhi, and Dehradun. Right now I&apos;m also the camera and BTS guy on a content creator project — because being useful beats being specialized.
+              Outside of code, I&apos;ve spent years doing voice over and production work, freelancing unofficially across Assam, Delhi, and Dehradun. Right now I&apos;m also the camera and BTS guy on a content creator project — because being useful beats being specialized.
             </p>
           </motion.div>
 
@@ -49,25 +75,33 @@ export const AboutSection = () => {
             <div className="space-y-8 md:space-y-12">
               {[
                 { 
+                  id: "btech-in-cse",
                   title: "B.Tech in CSE", 
                   org: "GTB4CEC - Rajouri Garden, Delhi", 
                   date: "2024 - Present",
                   desc: "Focused on building high-performance backend systems and automation."
                 },
                 { 
-                  title: "Schooling (CBSE)", 
-                  org: "Ryan International School - Gurugram", 
-                  date: "Graduated 2024",
-                  desc: "Science stream (PCM). Top performer and active in sports."
+                  id: "ryan-schooling",
+                  title: "Schooling", 
+                  org: "12th Grade", 
+                  date: "2024",
+                  desc: "Completed schooling and passed 12th Grade."
                 }
               ].map((item, i) => (
                 <motion.div
-                  key={i}
+                  key={item.id}
+                  id={item.id}
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.2 }}
                   viewport={{ once: true }}
-                  className="space-y-2 group"
+                  className={cn(
+                    "space-y-2 group p-4 rounded-xl border border-transparent transition-all duration-500",
+                    activeHighlight === item.id
+                      ? "border-spidey-red/40 bg-spidey-red/5 shadow-[0_0_25px_rgba(255,42,42,0.25)] scale-[1.01]"
+                      : ""
+                  )}
                 >
                   <div className="flex flex-col sm:flex-row justify-between sm:items-end border-b border-white/5 pb-2 gap-1">
                     <h4 className="text-lg md:text-xl font-bold text-text-primary group-hover:text-spidey-red transition-colors">{item.title}</h4>

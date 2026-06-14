@@ -1,32 +1,89 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Send } from "lucide-react";
+import { Send, Loader2 } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { HangingSpider } from "@/components/HangingSpider";
 
 export const ContactSection = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [activeHighlight, setActiveHighlight] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const highlight = params.get("highlight");
+    if (highlight) {
+      const el = document.getElementById(highlight);
+      if (el) {
+        const timerScroll = setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+          setActiveHighlight(highlight);
+        }, 500);
+
+        const timerFade = setTimeout(() => {
+          setActiveHighlight(null);
+        }, 4500);
+
+        return () => {
+          clearTimeout(timerScroll);
+          clearTimeout(timerFade);
+        };
+      }
+    }
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !email || !message) {
+      setStatus("error");
+      return;
+    }
+    
+    setStatus("loading");
+    
+    // Simulate loading for snappy multiverse sync animation
+    setTimeout(() => {
+      setStatus("success");
+      
+      // Construct mailto link and trigger browser client
+      const mailtoUrl = `mailto:Utkarshmanitripathi2006@gmail.com?subject=Signal from Portfolio: ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AReply to: ${encodeURIComponent(email)}`;
+      window.location.href = mailtoUrl;
+      
+      // Reset form
+      setName("");
+      setEmail("");
+      setMessage("");
+      
+      // Clear status after some time
+      setTimeout(() => setStatus("idle"), 4000);
+    }, 1500);
+  };
+
   return (
-    <section id="contact" className="py-20 md:py-32 container mx-auto px-6 relative">
+    <section id="contact" className="scroll-mt-28 py-20 md:py-32 container mx-auto px-6 relative">
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
         
-        {/* Left: Spider-Signal Visual */}
-        <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 flex-shrink-0">
-          <div className="absolute inset-0 bg-spidey-red/20 rounded-full blur-[80px] md:blur-[100px] animate-pulse" />
-          <motion.div
-            animate={{
-              scale: [1, 1.05, 1],
-              opacity: [0.5, 0.8, 0.5],
+        {/* Left: Spider Logo */}
+        <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 flex-shrink-0 flex items-center justify-center rounded-full border border-spidey-red/20 bg-background overflow-hidden shadow-[0_0_50px_rgba(255,42,42,0.1)]">
+          <div className="absolute inset-0 bg-spidey-red/10 rounded-full blur-[80px] md:blur-[100px]" />
+          <motion.img
+            src="/images/spiderman-hanging.png"
+            alt="Spiderman Hanging"
+            className="w-[120%] h-[120%] object-contain relative z-10"
+            initial={{ y: -300, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 50, 
+              damping: 10,
+              duration: 1 
             }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-0 border-2 border-spidey-red/30 rounded-full"
           />
-          <div className="absolute inset-4 border border-spidey-red/20 rounded-full" />
-          
-          <div className="absolute inset-0 flex items-center justify-center">
-            <svg viewBox="0 0 200 200" className="w-20 h-20 md:w-32 md:h-32 fill-spidey-red drop-shadow-[0_0_15px_rgba(225,29,46,0.8)]">
-               <path d="M100 20 C110 40 130 50 150 60 C140 80 140 100 150 120 C130 130 110 140 100 160 C90 140 70 130 50 120 C60 100 60 80 50 60 C70 50 90 40 100 20 Z" />
-            </svg>
-          </div>
         </div>
 
         {/* Right: Form / Info */}
@@ -36,46 +93,86 @@ export const ContactSection = () => {
               The Signal
             </h2>
             <p className="text-text-secondary text-sm md:text-lg">
-              Ready to collaborate in this universe or the next? Let's build something spectacular.
+              Ready to collaborate in this universe or the next? Let&apos;s build something spectacular.
             </p>
           </div>
 
-          <form className="space-y-4 md:space-y-6">
+          <form onSubmit={handleSubmit} id="email" className={cn(
+            "space-y-4 md:space-y-6 p-4 rounded-xl border border-transparent transition-all duration-500",
+            activeHighlight === "email" ? "border-spidey-red/40 bg-spidey-red/5 shadow-[0_0_25px_rgba(255,42,42,0.25)] scale-[1.01]" : ""
+          )}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
               <input 
                 type="text" 
                 placeholder="Name" 
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                disabled={status === "loading"}
+                required
                 className="w-full bg-white/5 border-2 border-white/10 rounded-sm px-5 py-3 md:px-6 md:py-4 text-text-primary text-sm placeholder:text-text-muted focus:border-spidey-red transition-colors outline-none"
               />
               <input 
                 type="email" 
                 placeholder="Email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={status === "loading"}
+                required
                 className="w-full bg-white/5 border-2 border-white/10 rounded-sm px-5 py-3 md:px-6 md:py-4 text-text-primary text-sm placeholder:text-text-muted focus:border-spidey-red transition-colors outline-none"
               />
             </div>
             <textarea 
               placeholder="Your Message" 
               rows={4}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              disabled={status === "loading"}
+              required
               className="w-full bg-white/5 border-2 border-white/10 rounded-sm px-5 py-3 md:px-6 md:py-4 text-text-primary text-sm placeholder:text-text-muted focus:border-spidey-red transition-colors outline-none resize-none"
             />
             
-            <motion.a
-              href="mailto:Utkarshmanitripathi2006@gmail.com"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="group flex items-center justify-center gap-3 w-full bg-spidey-red text-white font-black uppercase tracking-widest py-4 md:py-5 rounded-sm hover:bg-white hover:text-black transition-all duration-300 text-xs md:text-sm"
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="group flex items-center justify-center gap-3 w-full bg-spidey-red text-white font-black uppercase tracking-widest py-4 md:py-5 rounded-sm hover:bg-white hover:text-black transition-all duration-300 text-xs md:text-sm cursor-pointer disabled:opacity-85 disabled:cursor-not-allowed"
             >
-              <span>Send Signal</span>
-              <Send size={18} className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" />
-            </motion.a>
+              {status === "loading" ? (
+                <>
+                  <span>Broadcasting Signal...</span>
+                  <Loader2 size={18} className="animate-spin" />
+                </>
+              ) : (
+                <>
+                  <span>Send Signal</span>
+                  <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                </>
+              )}
+            </button>
+
+            {status === "success" && (
+              <p className="text-[10px] uppercase font-black tracking-widest text-emerald-500 animate-pulse text-center">
+                SIGNAL BROADCASTED SUCCESSFULLY! REDIRECTING...
+              </p>
+            )}
+            {status === "error" && (
+              <p className="text-[10px] uppercase font-black tracking-widest text-spidey-red animate-pulse text-center">
+                ERROR: ALL CHANNELS MUST BE FILLED.
+              </p>
+            )}
           </form>
 
-          <div className="flex flex-wrap justify-center md:justify-start gap-6 md:gap-8 pt-8 border-t border-white/10">
-             <a href="https://github.com/Utkarsh-Mani-Tripathi-GIT" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs">Github</a>
-             <a href="https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs">LinkedIn</a>
-             <a href="https://x.com/utkarshmanitr11" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs">Twitter</a>
-             <a href="https://www.instagram.com/jhandupatel.69" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs">Instagram</a>
-             <a href="https://wa.me/917065163175?text=hey%20i%20was%20just%20checking%20out%20your%20portfolio%20website%20and....." target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs">WhatsApp</a>
+          <div className="flex flex-wrap justify-center md:justify-start gap-6 md:gap-8 pt-8 border-t border-white/10 w-full">
+             <a href="https://github.com/Utkarsh-Mani-Tripathi-GIT" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs" title="Visit GitHub Profile">Github</a>
+             <a id="linkedin" href="https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/" target="_blank" className={cn(
+               "text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-2 py-0.5 rounded border border-transparent",
+               activeHighlight === "linkedin" ? "border-spidey-red/40 bg-spidey-red/5 text-spidey-red shadow-[0_0_15px_rgba(255,42,42,0.2)]" : ""
+             )} title="Visit LinkedIn Profile">LinkedIn</a>
+             <a href="https://x.com/utkarshmanitr11" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs" title="Visit Twitter Profile">Twitter</a>
+             <a href="https://www.instagram.com/jhandupatel.69" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs" title="Visit Instagram Profile">Instagram</a>
+             <a id="whatsapp" href="https://wa.me/917065163175?text=hey%20i%20was%20just%20checking%20out%20your%20portfolio%20website%20and....." target="_blank" className={cn(
+               "text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-2 py-0.5 rounded border border-transparent",
+               activeHighlight === "whatsapp" ? "border-spidey-red/40 bg-spidey-red/5 text-spidey-red shadow-[0_0_15px_rgba(255,42,42,0.2)]" : ""
+             )} title="Chat on WhatsApp">WhatsApp</a>
           </div>
         </div>
       </div>

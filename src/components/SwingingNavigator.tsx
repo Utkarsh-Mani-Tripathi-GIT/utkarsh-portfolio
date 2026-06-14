@@ -97,32 +97,36 @@ export const SwingingNavigator = () => {
       >
         {SECTIONS.map((section, i) => (
           <div key={section.id} className="w-screen h-full flex-shrink-0 relative">
-             <div className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none">
+             <div className="absolute inset-0 flex items-end justify-center">
                 <div 
                   className="w-[85%] h-[90%] border-x border-t border-white/5 rounded-t-[4rem] shadow-[0_-40px_100px_rgba(0,0,0,0.3)] relative overflow-hidden transition-colors duration-500"
                   style={{ 
                     background: `linear-gradient(to bottom, var(--building-top), var(--building-bottom))` 
                   }}
                 >
-                   <div className="absolute inset-0 grid grid-cols-10 gap-4 p-12 opacity-5">
-                      {Array.from({ length: 60 }).map((_, j) => (
-                         <div key={j} className="h-4 bg-text-muted/20 rounded-sm" />
-                      ))}
+                   {/* Background Effects */}
+                   <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute inset-0 grid grid-cols-10 gap-4 p-12 opacity-5">
+                         {Array.from({ length: 60 }).map((_, j) => (
+                            <div key={j} className="h-4 bg-text-muted/20 rounded-sm" />
+                         ))}
+                      </div>
+                      <motion.div 
+                        animate={{ opacity: [0.1, 0.3, 0.1] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute inset-0 bg-spidey-red/5 blur-3xl"
+                      />
+                      <div className={`absolute top-0 left-0 w-full h-1 transition-all duration-1000 z-20 ${activeIdx === i ? "bg-spidey-red shadow-[0_0_50px_rgba(255,42,42,1)]" : "bg-white/5"}`} />
                    </div>
-                   <motion.div 
-                     animate={{ opacity: [0.1, 0.3, 0.1] }}
-                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                     className="absolute inset-0 bg-spidey-red/5 blur-3xl pointer-events-none"
-                   />
-                   <div className={`absolute top-0 left-0 w-full h-1 transition-all duration-1000 ${activeIdx === i ? "bg-spidey-red shadow-[0_0_50px_rgba(255,42,42,1)]" : "bg-white/5"}`} />
-                </div>
-             </div>
-             
-             <div className="relative z-10 h-full overflow-y-auto overflow-x-hidden pt-28 custom-scrollbar">
-                <div className={`container mx-auto px-6 transition-all duration-1000 ${activeIdx === i ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-20 blur-xl"}`}>
-                   <Suspense fallback={null}>
-                      <section.component />
-                   </Suspense>
+                   
+                   {/* Scrollable Content inside Building */}
+                   <div className="relative z-10 h-full w-full overflow-y-auto overflow-x-hidden pt-16 pb-20 custom-scrollbar">
+                      <div className={`container mx-auto px-6 transition-all duration-1000 ${activeIdx === i ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-20 blur-xl"}`}>
+                         <Suspense fallback={null}>
+                            <section.component />
+                         </Suspense>
+                      </div>
+                   </div>
                 </div>
              </div>
           </div>

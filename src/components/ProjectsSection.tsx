@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { StickmanGame } from "./StickmanGame";
 import { Download, Play, X, Code, ExternalLink } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const PROJECTS = [
   {
+    id: "stickman-runner",
     title: "Stickman Runner: Multiverse",
     description: "A high-fidelity recreation of my Python game. Features dynamic day/night transitions, duck/slide mechanics, screen shake, and enemy spaceships.",
     tech: ["React", "Canvas", "Game Engine", "GSAP"],
@@ -17,6 +19,7 @@ const PROJECTS = [
     liveUrl: null,
   },
   {
+    id: "legal-observatory",
     title: "National Legal Observatory",
     description: "An independent legal research platform and academic journal covering constitutional law, judicial judgments, public policy, and civil rights — built for my friend Bhoomija Khanna, a law student and the platform's founder & chief editor. I'm the tech guy.",
     tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
@@ -28,6 +31,7 @@ const PROJECTS = [
     badge: null,
   },
   {
+    id: "ultimate-runner",
     title: "Ultimate Runner",
     description: "A hybrid infinite runner combining the depth of Temple Run with the energy of Subway Surfers. Currently in active development — featuring 3D lanes, power-ups, and dynamic obstacle generation.",
     tech: ["Game Dev", "Python", "In Progress"],
@@ -42,9 +46,33 @@ const PROJECTS = [
 
 export const ProjectsSection = () => {
   const [playingGame, setPlayingGame] = useState(false);
+  const [activeHighlight, setActiveHighlight] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const highlight = params.get("highlight");
+    if (highlight) {
+      const el = document.getElementById(highlight);
+      if (el) {
+        const timerScroll = setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+          setActiveHighlight(highlight);
+        }, 500);
+
+        const timerFade = setTimeout(() => {
+          setActiveHighlight(null);
+        }, 4500);
+
+        return () => {
+          clearTimeout(timerScroll);
+          clearTimeout(timerFade);
+        };
+      }
+    }
+  }, []);
 
   return (
-    <section id="projects" className="py-20 md:py-32 container mx-auto px-6">
+    <section id="projects" className="scroll-mt-28 py-20 md:py-32 container mx-auto px-6">
       <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -63,12 +91,18 @@ export const ProjectsSection = () => {
         <div className="max-w-4xl">
           {PROJECTS.map((project, i) => (
             <motion.div
-              key={i}
+              key={project.id}
+              id={project.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="group relative bg-white/5 border border-white/10 p-6 md:p-10 rounded-2xl hover:border-spidey-red/50 transition-all duration-500 overflow-hidden"
+              className={cn(
+                "group relative bg-white/5 border p-6 md:p-10 rounded-2xl transition-all duration-500 overflow-hidden",
+                activeHighlight === project.id
+                  ? "border-spidey-red bg-spidey-red/5 shadow-[0_0_35px_rgba(255,42,42,0.4)] scale-[1.01]"
+                  : "border-white/10 hover:border-spidey-red/50"
+              )}
             >
               <div className="flex flex-col lg:flex-row gap-8 md:gap-12 relative z-10">
                 <div className="flex-1 space-y-6 md:space-y-8">
@@ -118,7 +152,7 @@ export const ProjectsSection = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="flex-1 sm:flex-none px-6 md:px-8 py-3 md:py-4 bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-[10px] md:text-xs rounded-sm hover:bg-white hover:text-black transition-all flex items-center justify-center gap-3"
+                        className="flex-1 sm:flex-none px-6 md:px-8 py-3 md:py-4 bg-glass-bg border border-text-primary/10 text-text-primary font-black uppercase tracking-widest text-[10px] md:text-xs rounded-sm hover:bg-text-primary hover:text-background transition-all flex items-center justify-center gap-3"
                       >
                         <Download size={14} />
                         Source
@@ -128,7 +162,7 @@ export const ProjectsSection = () => {
                     <a 
                       href={project.github}
                       target="_blank"
-                      className="p-3 md:p-4 bg-white/5 border border-white/10 text-white rounded-sm hover:text-spidey-red transition-colors flex items-center justify-center"
+                      className="p-3 md:p-4 bg-glass-bg border border-text-primary/10 text-text-primary rounded-sm hover:text-spidey-red hover:border-spidey-red/50 transition-colors flex items-center justify-center"
                       title="View GitHub Repository"
                     >
                       <Code size={18} />

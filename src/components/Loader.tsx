@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { SpideyMask } from "@/components/SpideyMask";
 
 export const Loader = ({ onComplete }: { onComplete: () => void }) => {
   const [loading, setLoading] = useState(true);
@@ -24,33 +25,7 @@ export const Loader = ({ onComplete }: { onComplete: () => void }) => {
         >
           <div className="relative">
             {/* Animated Web Logo */}
-            <svg width="200" height="200" viewBox="0 0 200 200" className="overflow-visible">
-              <motion.path
-                d="M100 10 L100 190 M10 100 L190 100 M35 35 L165 165 M165 35 L35 165"
-                stroke="white"
-                strokeWidth="1"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
-              />
-              <motion.path
-                d="M100 60 L130 80 L140 100 L130 120 L100 140 L70 120 L60 100 L70 80 Z"
-                stroke="var(--spidey-red)"
-                strokeWidth="2"
-                initial={{ pathLength: 0, scale: 0.8 }}
-                animate={{ pathLength: 1, scale: 1 }}
-                transition={{ duration: 2, delay: 0.5, ease: "easeOut" }}
-              />
-              <motion.path
-                d="M100 30 L150 60 L170 100 L150 140 L100 170 L50 140 L30 100 L50 60 Z"
-                stroke="var(--spidey-red)"
-                strokeWidth="1"
-                opacity="0.5"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 2, delay: 0.8, ease: "easeOut" }}
-              />
-            </svg>
+            <SpideyMask className="w-32 h-32 md:w-48 md:h-48 text-spidey-red drop-shadow-[0_0_15px_rgba(225,29,46,0.8)] mx-auto" animate={true} drawDuration={1.5} />
 
             {/* Glitchy Text */}
             <motion.div

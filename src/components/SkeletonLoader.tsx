@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const LOADING_PHASES = [
   "Initializing Multiverse...",
   "Calibrating Web-Shooters...",
-  "Loading NYC Assets...",
+  "Loading Bihar and Gurgaon Assets...",
   "Stabilizing Timeline...",
 ];
 

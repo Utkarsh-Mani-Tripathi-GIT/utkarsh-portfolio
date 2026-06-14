@@ -6,16 +6,16 @@
   --secondary-bg: #11111A;
   --glass-bg: rgba(255, 255, 255, 0.05);
   
-  --spidey-red: #FF2A2A;
-  --deep-red: #B31217;
-  --accent-glow-red: #FF4D4D;
+  --spidey-red: #E72020;
+  --deep-red: #9A1316;
+  --accent-glow-red: #E72020;
   
-  --electric-blue: #00AEEF;
-  --deep-blue: #005F99;
-  --glow-blue: #33CFFF;
+  --electric-blue: #4F6793;
+  --deep-blue: #223057;
+  --glow-blue: #4F6793;
   
-  --neon-purple: #8A2BE2;
-  --violet-glow: #B266FF;
+  --neon-purple: #9A1316;
+  --violet-glow: #4F6793;
 
   --text-primary: #FFFFFF;
   --text-secondary: #B0B0B0;
@@ -40,9 +40,9 @@
   --text-secondary: #48484A;
   --text-muted: #8E8E93;
   
-  --spidey-red: #D70015;
-  --electric-blue: #007AFF;
-  --neon-purple: #AF52DE;
+  --spidey-red: #E72020;
+  --electric-blue: #4F6793;
+  --neon-purple: #9A1316;
 
   --building-top: #E5E5EA;
   --building-bottom: #F2F2F7;
