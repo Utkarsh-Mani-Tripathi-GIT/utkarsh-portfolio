@@ -160,14 +160,14 @@ export const ContactSection = () => {
             )}
           </form>
 
-          <div className="flex flex-wrap justify-center md:justify-start gap-6 md:gap-8 pt-8 border-t border-white/10 w-full">
-             <a href="https://github.com/Utkarsh-Mani-Tripathi-GIT" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs" title="Visit GitHub Profile">Github</a>
+          <div className="flex flex-wrap justify-center md:justify-start gap-1 sm:gap-2 md:gap-4 pt-8 border-t border-white/10 w-full">
+             <a href="https://github.com/Utkarsh-Mani-Tripathi-GIT" target="_blank" className="text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-2 py-0.5 rounded border border-transparent" title="Visit GitHub Profile">Github</a>
              <a id="linkedin" href="https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/" target="_blank" className={cn(
                "text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-2 py-0.5 rounded border border-transparent",
                activeHighlight === "linkedin" ? "border-spidey-red/40 bg-spidey-red/5 text-spidey-red shadow-[0_0_15px_rgba(255,42,42,0.2)]" : ""
              )} title="Visit LinkedIn Profile">LinkedIn</a>
-             <a href="https://x.com/utkarshmanitr11" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs" title="Visit Twitter Profile">Twitter</a>
-             <a href="https://www.instagram.com/jhandupatel.69" target="_blank" className="text-text-muted hover:text-spidey-red transition-colors font-black uppercase tracking-widest text-[9px] md:text-xs" title="Visit Instagram Profile">Instagram</a>
+             <a href="https://x.com/utkarshmanitr11" target="_blank" className="text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-2 py-0.5 rounded border border-transparent" title="Visit Twitter Profile">Twitter</a>
+             <a href="https://www.instagram.com/jhandupatel.69" target="_blank" className="text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-2 py-0.5 rounded border border-transparent" title="Visit Instagram Profile">Instagram</a>
              <a id="whatsapp" href="https://wa.me/917065163175?text=hey%20i%20was%20just%20checking%20out%20your%20portfolio%20website%20and....." target="_blank" className={cn(
                "text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-2 py-0.5 rounded border border-transparent",
                activeHighlight === "whatsapp" ? "border-spidey-red/40 bg-spidey-red/5 text-spidey-red shadow-[0_0_15px_rgba(255,42,42,0.2)]" : ""
