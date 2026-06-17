@@ -68,22 +68,31 @@ export const ContactSection = () => {
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
         
         {/* Left: Spider Logo */}
-        <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 flex-shrink-0 flex items-center justify-center rounded-full border border-spidey-red/20 bg-background overflow-hidden">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 flex-shrink-0 flex items-center justify-center rounded-full border border-spidey-red/20 bg-background overflow-hidden"
+        >
           <motion.img
             src="/images/spiderman-hanging.png"
             alt="Spiderman Hanging"
             className="w-[85%] h-[85%] object-contain relative z-10"
-            initial={{ y: -300, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ 
-              type: "spring", 
-              stiffness: 50, 
-              damping: 10,
-              duration: 1 
+            variants={{
+              hidden: { y: -300, opacity: 0 },
+              visible: { 
+                y: 0, 
+                opacity: 1,
+                transition: { 
+                  type: "spring", 
+                  stiffness: 50, 
+                  damping: 10,
+                  duration: 1 
+                }
+              }
             }}
           />
-        </div>
+        </motion.div>
 
         {/* Right: Form / Info */}
         <div className="flex-1 space-y-8 md:space-y-12 w-full">
@@ -160,16 +169,16 @@ export const ContactSection = () => {
             )}
           </form>
 
-          <div className="flex flex-wrap justify-center md:justify-start gap-1 sm:gap-2 md:gap-4 pt-8 border-t border-white/10 w-full">
-             <a href="https://github.com/Utkarsh-Mani-Tripathi-GIT" target="_blank" className="text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-2 py-0.5 rounded border border-transparent" title="Visit GitHub Profile">Github</a>
+          <div className="grid grid-cols-5 gap-1 sm:gap-2 md:gap-4 pt-8 border-t border-white/10 w-full text-center">
+             <a href="https://github.com/Utkarsh-Mani-Tripathi-GIT" target="_blank" className="text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-1 py-0.5 rounded border border-transparent" title="Visit GitHub Profile">Github</a>
              <a id="linkedin" href="https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/" target="_blank" className={cn(
-               "text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-2 py-0.5 rounded border border-transparent",
+               "text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-1 py-0.5 rounded border border-transparent",
                activeHighlight === "linkedin" ? "border-spidey-red/40 bg-spidey-red/5 text-spidey-red shadow-[0_0_15px_rgba(255,42,42,0.2)]" : ""
              )} title="Visit LinkedIn Profile">LinkedIn</a>
-             <a href="https://x.com/utkarshmanitr11" target="_blank" className="text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-2 py-0.5 rounded border border-transparent" title="Visit Twitter Profile">Twitter</a>
-             <a href="https://www.instagram.com/jhandupatel.69" target="_blank" className="text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-2 py-0.5 rounded border border-transparent" title="Visit Instagram Profile">Instagram</a>
+             <a href="https://x.com/utkarshmanitr11" target="_blank" className="text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-1 py-0.5 rounded border border-transparent" title="Visit Twitter Profile">Twitter</a>
+             <a href="https://www.instagram.com/jhandupatel.69" target="_blank" className="text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-1 py-0.5 rounded border border-transparent" title="Visit Instagram Profile">Instagram</a>
              <a id="whatsapp" href="https://wa.me/917065163175?text=hey%20i%20was%20just%20checking%20out%20your%20portfolio%20website%20and....." target="_blank" className={cn(
-               "text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-2 py-0.5 rounded border border-transparent",
+               "text-text-muted hover:text-spidey-red transition-all font-black uppercase tracking-widest text-[9px] md:text-xs px-1 py-0.5 rounded border border-transparent",
                activeHighlight === "whatsapp" ? "border-spidey-red/40 bg-spidey-red/5 text-spidey-red shadow-[0_0_15px_rgba(255,42,42,0.2)]" : ""
              )} title="Chat on WhatsApp">WhatsApp</a>
           </div>
