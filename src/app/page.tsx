@@ -4,8 +4,8 @@ import { HeroSection } from "@/components/HeroSection";
 
 export default function Home() {
   return (
-    <div className="pt-28">
+    <main className="h-screen w-screen overflow-hidden">
       <HeroSection />
-    </div>
+    </main>
   );
 }

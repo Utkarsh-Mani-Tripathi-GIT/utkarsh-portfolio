@@ -6,31 +6,67 @@ import { cn } from "@/lib/utils";
 
 const EXPERIENCE = [
   { 
-    id: "crossover-camera",
-    title: "Camera Crew & Tech Lead", 
-    org: "Unofficial Freelance", 
-    date: "2025 - Present",
-    desc: "Managing camera operations, BTS documentation, and on-set tech for a content creator project. Handling equipment setup, shot composition, and post-production coordination across shoots.",
-    tech: ["Camera Ops", "BTS", "Content Production", "On-set Tech"],
-    link: "https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/details/experience/"
+    id: "nlo-flagship",
+    title: "Flagship Lead Developer & Architect", 
+    org: "National Legal Observatory", 
+    date: "2024 - Present",
+    desc: "Architected and shipped a Next.js legal research platform. Engineered a multi-stage review process (Draft to Live Publishing), live search, and database access for Judges and Lawyers. Platform has 40+ active users and 11 active subscribers.",
+    tech: ["Next.js", "Supabase", "PostgreSQL", "System Architecture"],
+    link: "https://legal-observatory.vercel.app/"
   },
   { 
-    id: "flipkart-samarth",
-    title: "Software Development Intern", 
-    org: "Flipkart Samarth", 
-    date: "Feb 2025 - Apr 2025",
-    desc: "Built and optimized backend systems using Node.js, Express.js, and MongoDB to streamline seller onboarding. Developed secure RESTful APIs to enhance database efficiency.",
-    tech: ["Node.js", "Express", "MongoDB", "REST APIs"],
-    link: "https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/details/experience/?highlightedId=2633012074"
+    id: "exp-coaching",
+    title: "Athletics Coach & Team Lead", 
+    org: "GBL (Gurugram Basketball League) Team", 
+    date: "Mar 2024 - Nov 2024",
+    desc: "Led and coached an 11-player basketball squad, implementing training schedules, offensive plays, and game strategies. Fostered collaboration, high-agency decision-making, and structural leadership.",
+    tech: ["Leadership", "Team Operations", "Strategic Planning", "Coaching"],
+    link: "https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/"
   },
   { 
     id: "crossover-voice",
-    title: "Voice Over Artist", 
-    org: "Unofficial Freelance", 
-    date: "Nov 2020 - Feb 2024",
-    desc: "Delivered professional voice over work across commercial, creative, and media projects based out of Assam, Delhi, and Dehradun. Managed vocal delivery, modulation training, and team coordination.",
-    tech: ["Audio Engineering", "Voice Modulation", "Project Management"],
-    link: "https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/details/experience/?highlightedId=2860457352"
+    title: "Voice Production & Industry Operator", 
+    org: "Voice Over Production", 
+    date: "Nov 2019 - Present",
+    desc: "Completed 200+ voice production projects for 70–90 clients. Recorded and produced high-profile campaigns for Sunfeast ('Dil Maange More'), Man of Action, and ongoing content for Brazzers, managing the full recording process and client operations.",
+    tech: ["Audio Production", "Client Operations", "Workflow Management"],
+    link: "https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/"
+  },
+  { 
+    id: "voice-ai-training",
+    title: "Voice AI & Operations Trainer", 
+    org: "Voice AI Operations", 
+    date: "Mar 2025 - Nov 2025",
+    desc: "Managed and trained 30+ voice artists to adapt performance standards for AI model training pipelines in parallel with other voice over projects (including Pokémon UNITE) via Crossover Media. Managed a team of 5 audio editors to compile high-quality vocal datasets.",
+    tech: ["AI Voice Models", "Team Leadership", "Editor Management", "Quality Assurance"],
+    link: "https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/"
+  },
+  { 
+    id: "flipkart-samarth",
+    title: "Operations & Tech Support Intern", 
+    org: "Flipkart Samarth", 
+    date: "Feb 2025 - Apr 2025",
+    desc: "Provided key operational support and system troubleshooting for seller onboarding workflows. Assisted staff with technical support, ensuring system uptime and efficient operations.",
+    tech: ["System Troubleshooting", "Operations Support", "Workflow Management"],
+    link: "https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/"
+  },
+  { 
+    id: "crossover-camera",
+    title: "Paid Production & Camera Operator", 
+    org: "Camera Crew (Freelance)", 
+    date: "2025",
+    desc: "Collaborated within an 18-member production crew on paid multi-city video projects. Operated advanced cameras, managed BTS documentation, and handled on-set technical coordination.",
+    tech: ["Video Production", "Editing", "Team Collaboration", "Multi-city Production"],
+    link: "https://www.linkedin.com/in/utkarsh-mani-tripathi-b48b3730a/"
+  },
+  { 
+    id: "software-development",
+    title: "Software & Automation Developer", 
+    org: "Independent Products", 
+    date: "2024 - Present",
+    desc: "Built local automation systems integrating Gemma models, Siri, and Alexa APIs. Designed smart-room controls for household appliances (lights, fan, AC, purifier, lock, projector, sound systems). Developed custom python automation scripts.",
+    tech: ["Local AI", "Gemma", "Home Automation APIs", "Python Scripting"],
+    link: "https://github.com/Utkarsh-Mani-Tripathi-GIT"
   },
 ];
 

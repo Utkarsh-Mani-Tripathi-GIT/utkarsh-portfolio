@@ -4,17 +4,18 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Brain, Zap, Shield, Target, Cpu, Code } from "lucide-react";
 import { cn } from "@/lib/utils";
+import BorderGlow from "@/components/BorderGlow";
 
 const SKILLS = [
-  { id: "react-nextjs", name: "React & Next.js", icon: Code, color: "text-electric-blue", desc: "Currently learning and building responsive frontends with React 19 and Next.js App Router." },
-  { id: "python-c", name: "Python / C", icon: Target, color: "text-spidey-red", desc: "Writing efficient scripts, automation tools, and backend logic — the languages I started with." },
-  { id: "backend-apis", name: "Backend & Databases", icon: Brain, color: "text-neon-purple", desc: "Building RESTful APIs with Node.js and Express. Good with SQL basics, MongoDB, and server logic." },
-  { id: "ai-automation", name: "AI & Automation", icon: Cpu, color: "text-electric-blue", desc: "Integrating Gemini API, LLMs, and AI tools into real products. Prompt engineering and agentic workflows." },
-  { id: "git-devops", name: "Git & Deployments", icon: Zap, color: "text-spidey-red", desc: "Version control with Git, Vercel deployments, and keeping things actually shipping." },
-  { id: "voice-over", name: "Voice Over", icon: Cpu, color: "text-neon-purple", desc: "Years of professional voice work across commercial and media projects, freelancing unofficially." },
-  { id: "camera-production", name: "Camera & Production", icon: Target, color: "text-electric-blue", desc: "On-set camera ops, BTS, and content production for video creators." },
-  { id: "team-leadership", name: "Team Leadership", icon: Shield, color: "text-text-muted", desc: "Managing crews and collaborators across creative and technical projects." },
-  { id: "problem-solving", name: "Problem Solving", icon: Brain, color: "text-spidey-red", desc: "Breaking down hard problems — whether it's a system design challenge or figuring out a shot on set." },
+  { id: "react-nextjs", name: "React & Next.js", icon: Code, color: "text-electric-blue", desc: "Built flagship Next.js production platforms (NLO) and responsive SPAs using modern React hooks and UI design systems." },
+  { id: "python-c", name: "Python / C", icon: Target, color: "text-spidey-red", desc: "Developed script-based automation engines, procedurally generated games, and custom workspace productivity utilities." },
+  { id: "backend-apis", name: "Backend & Databases", icon: Brain, color: "text-neon-purple", desc: "Engineered secure REST APIs using Node.js & Express. Designed relational database schemas in PostgreSQL/Supabase and seller onboarding flows." },
+  { id: "ai-automation", name: "AI & Automation", icon: Cpu, color: "text-electric-blue", desc: "Integrated Gemini/Gemma models. Programmed custom room controls (Siri/Alexa triggers for lights, AC, projectors, audio)." },
+  { id: "git-devops", name: "Git & Deployments", icon: Zap, color: "text-spidey-red", desc: "Version control workflows with Git, CI/CD pipeline structures, and live deployments on Vercel and Netlify." },
+  { id: "voice-over", name: "Voice Production & Training", icon: Cpu, color: "text-neon-purple", desc: "Managed vocal setups, acoustic editing, and trained 30+ voice actors for AI model dataset compilation." },
+  { id: "camera-production", name: "Camera & Media Production", icon: Target, color: "text-electric-blue", desc: "Paid camera operator and tech lead in an 18-member crew for multi-city video production." },
+  { id: "team-leadership", name: "Team Leadership", icon: Shield, color: "text-text-muted", desc: "Coached/led an 11-player basketball squad, trained 30+ voice artists, and directed a team of 5 audio editors." },
+  { id: "problem-solving", name: "Problem Solving", icon: Brain, color: "text-spidey-red", desc: "Analyzing complex logic issues, profiling rendering bottlenecks, and optimizing local hardware network endpoints." },
 ];
 
 export const SkillsSection = () => {
@@ -66,26 +67,36 @@ export const SkillsSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={cn(
-                "group p-6 md:p-8 glass rounded-xl md:rounded-2xl transition-all duration-500 hover:-translate-y-2 border",
-                activeHighlight === skill.id
-                  ? "border-spidey-red bg-spidey-red/5 shadow-[0_0_25px_rgba(255,42,42,0.25)] scale-[1.01]"
-                  : "border-white/5 hover:border-spidey-red/50"
-              )}
+              className="group transition-all duration-500 hover:-translate-y-2"
             >
-              <div className="flex items-start gap-4 md:gap-6">
-                <div className={cn("p-3 md:p-4 rounded-lg md:rounded-xl bg-white/5 shrink-0", skill.color)}>
-                  <skill.icon size={24} />
+              <BorderGlow
+                glowColor="353 84 50"
+                colors={['#E11D48', '#1e1b4b', '#ffffff']}
+                borderRadius={16}
+                glowRadius={40}
+                glowIntensity={1.2}
+                backgroundColor="rgba(255, 255, 255, 0.02)"
+                className={cn(
+                  "p-6 md:p-8 border border-white/5 backdrop-blur-md transition-all duration-500",
+                  activeHighlight === skill.id
+                    ? "border-spidey-red/80 bg-spidey-red/5 shadow-[0_0_25px_rgba(255,42,42,0.25)]"
+                    : "hover:border-spidey-red/30"
+                )}
+              >
+                <div className="flex items-start gap-4 md:gap-6">
+                  <div className={cn("p-3 md:p-4 rounded-lg md:rounded-xl bg-white/5 shrink-0", skill.color)}>
+                    <skill.icon size={24} />
+                  </div>
+                  <div className="space-y-1 md:space-y-2">
+                    <h3 className="text-lg md:text-xl font-black italic uppercase text-text-primary group-hover:text-spidey-red transition-colors leading-tight">
+                      {skill.name}
+                    </h3>
+                    <p className="text-text-muted text-xs md:text-sm leading-relaxed">
+                      {skill.desc}
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-1 md:space-y-2">
-                  <h3 className="text-lg md:text-xl font-black italic uppercase text-text-primary group-hover:text-spidey-red transition-colors leading-tight">
-                    {skill.name}
-                  </h3>
-                  <p className="text-text-muted text-xs md:text-sm leading-relaxed">
-                    {skill.desc}
-                  </p>
-                </div>
-              </div>
+              </BorderGlow>
             </motion.div>
           ))}
         </div>

@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 interface GlitchTextProps {
   text: string;
   className?: string;
-  as?: React.ElementType;
+  as?: any;
 }
 
 export const GlitchText: React.FC<GlitchTextProps> = ({

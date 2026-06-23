@@ -4,6 +4,52 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+const VerticalCurvedMarquee = () => {
+  const [offset, setOffset] = useState(0);
+  const pathId = "vertical-about-curve";
+
+  useEffect(() => {
+    let frame = 0;
+    const step = () => {
+      setOffset(prev => {
+        const next = prev - 0.8; // scroll speed
+        return next < -1000 ? 0 : next;
+      });
+      frame = requestAnimationFrame(step);
+    };
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  const text = "BUILDER • ENGINEER • CREATOR • SPIDER-MAN •";
+  const repeatedText = `${text} ${text} ${text} ${text}`;
+
+  return (
+    <svg
+      className="absolute top-0 left-0 w-[400px] h-full overflow-visible pointer-events-none select-none z-0"
+      style={{ 
+        WebkitMaskImage: "linear-gradient(to bottom, transparent, white 20%, white 80%, transparent)",
+        maskImage: "linear-gradient(to bottom, transparent, white 20%, white 80%, transparent)"
+      }}
+    >
+      <defs>
+        {/* Curve goes from top-left, arches right, and goes back to bottom-left */}
+        <path
+          id={pathId}
+          d="M 40,-100 Q 360,380 40,860"
+          fill="none"
+          stroke="transparent"
+        />
+      </defs>
+      <text className="fill-white opacity-[0.06] font-black italic text-[7rem] tracking-wider uppercase leading-none">
+        <textPath href={`#${pathId}`} startOffset={`${offset}px`}>
+          {repeatedText}
+        </textPath>
+      </text>
+    </svg>
+  );
+};
+
 export const AboutSection = () => {
   const [activeHighlight, setActiveHighlight] = useState<string | null>(null);
 
@@ -31,8 +77,10 @@ export const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" className="scroll-mt-28 py-20 md:py-32 container mx-auto px-6 overflow-hidden">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 md:gap-20">
+    <section id="about" className="relative scroll-mt-28 py-20 md:py-32 container mx-auto px-6 overflow-hidden">
+      {/* Background Vertical Curved Loop Marquee */}
+      <VerticalCurvedMarquee />
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 md:gap-20 relative z-10">
         
         {/* Left: Sticky Title */}
         <div className="md:w-1/3 md:sticky md:top-32 h-fit">
@@ -60,26 +108,26 @@ export const AboutSection = () => {
              className="space-y-6 md:space-y-8"
           >
             <p className="text-xl sm:text-2xl md:text-3xl text-text-secondary font-medium leading-tight">
-              I am a <span className="text-text-primary font-bold">Computer Science Engineering</span> student at GTB4CEC, Delhi — building things across <span className="text-text-primary font-bold">fullstack dev, AI, and whatever else needs building</span>.
+              I am a <span className="text-text-primary font-bold">High-Agency Product Builder</span> entering my 3rd year of Computer Science Engineering at GTB4CEC, Delhi — shipping systems across <span className="text-text-primary font-bold">software, automation, media, and research</span>.
             </p>
             <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-              Gurugram-based, college in Delhi — I got into tech because I couldn&apos;t stop taking things apart to see how they worked. That curiosity turned into a career in making them work better.
+              Gurugram-based, college in Delhi — I got into tech because I couldn&apos;t stop taking things apart to see how they worked. That curiosity turned into building production-ready applications used by real users.
             </p>
             <p className="text-text-secondary text-base md:text-lg leading-relaxed">
-              Outside of code, I&apos;ve spent years doing voice over and production work, freelancing unofficially across Assam, Delhi, and Dehradun. Right now I&apos;m also the camera and BTS guy on a content creator project — because being useful beats being specialized.
+              Outside of code, I have built real-world automation systems, trained voice artists, and produced professional media. My priority is always to build products that get used and solve actual problems — because being useful and shipping beats being specialized.
             </p>
           </motion.div>
-
+ 
           <div className="space-y-8 md:space-y-12">
             <h3 className="text-text-primary font-black uppercase tracking-widest text-[10px] md:text-sm border-b border-text-primary/10 pb-4">Education</h3>
             <div className="space-y-8 md:space-y-12">
               {[
                 { 
                   id: "btech-in-cse",
-                  title: "B.Tech in CSE", 
+                  title: "B.Tech in CSE (3rd Year)", 
                   org: "GTB4CEC - Rajouri Garden, Delhi", 
                   date: "2024 - Present",
-                  desc: "Focused on building high-performance backend systems and automation."
+                  desc: "Studying Computer Science, with an active focus on distributed systems, databases, automation scripting, and building real-world software products."
                 },
                 { 
                   id: "ryan-schooling",

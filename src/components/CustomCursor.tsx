@@ -82,11 +82,11 @@ export const CustomCursor = () => {
           rotate: rotation,
           translateX: "-50%",
           translateY: "-50%",
-          opacity: isOverContact || isOverNav ? 0 : 1,
+          opacity: isOverContact || isOverNav ? 0 : 0.6,
           scale: isOverContact || isOverNav ? 0 : 1,
         }}
       >
-        <svg viewBox="0 0 100 100" className={`w-full h-full fill-spidey-red drop-shadow-[0_0_12px_rgba(255,42,42,0.8)] ${isMoving ? "spider-moving" : ""}`}>
+        <svg viewBox="0 0 100 100" className={`w-full h-full fill-spidey-red drop-shadow-[0_0_8px_rgba(255,42,42,0.35)] ${isMoving ? "spider-moving" : ""}`}>
           {/* Main Body */}
           <ellipse cx="50" cy="60" rx="16" ry="24" />
           <circle cx="50" cy="36" r="14" />
@@ -116,7 +116,7 @@ export const CustomCursor = () => {
           y: cursorYSpring,
           translateX: "-50%",
           translateY: "-50%",
-          opacity: isOverContact || isOverNav ? 0 : 1,
+          opacity: isOverContact || isOverNav ? 0 : 0.4,
           scale: isOverContact || isOverNav ? 0 : 1,
         }}
       />

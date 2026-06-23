@@ -67,32 +67,36 @@ export const ContactSection = () => {
     <section id="contact" className="scroll-mt-28 py-20 md:py-32 container mx-auto px-6 relative">
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
         
-        {/* Left: Spider Logo */}
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 flex-shrink-0 flex items-center justify-center rounded-full border border-spidey-red/20 bg-background overflow-hidden"
-        >
-          <motion.img
-            src="/images/spiderman-hanging.png"
-            alt="Spiderman Hanging"
-            className="w-[85%] h-[85%] object-contain relative z-10"
-            variants={{
-              hidden: { y: -300, opacity: 0 },
-              visible: { 
-                y: 0, 
-                opacity: 1,
-                transition: { 
-                  type: "spring", 
-                  stiffness: 50, 
-                  damping: 10,
-                  duration: 1 
+        <div className="flex flex-col items-center gap-6 md:gap-8 w-full md:w-auto shrink-0">
+          {/* Left: Spider Logo */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 flex-shrink-0 flex items-center justify-center rounded-full border border-spidey-red/20 bg-background overflow-hidden"
+          >
+            <motion.img
+              src="/images/spiderman-hanging.png"
+              alt="Spiderman Hanging"
+              className="w-[85%] h-[85%] object-contain relative z-10"
+              variants={{
+                hidden: { y: -300, opacity: 0 },
+                visible: { 
+                  y: 0, 
+                  opacity: 1,
+                  transition: { 
+                    type: "spring", 
+                    stiffness: 50, 
+                    damping: 10,
+                    duration: 1 
+                  }
                 }
-              }
-            }}
-          />
-        </motion.div>
+              }}
+            />
+          </motion.div>
+
+          {/* Direct channels removed for now */}
+        </div>
 
         {/* Right: Form / Info */}
         <div className="flex-1 space-y-8 md:space-y-12 w-full">
